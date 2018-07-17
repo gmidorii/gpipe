@@ -1,14 +1,14 @@
-## gpipe
+# gpipe
 
-### Overview
+## Overview
 pipeline implementation for go.
 
-### Usage
+## Usage
 ```go
 func main() {
-	in := gpipe.Input(os.Stdin, 10)
-	converters := []gpipe.Converter{
-		// Converter type
+  in := gpipe.Input(os.Stdin, 10)
+  converters := []gpipe.Converter{
+    // Converter type
   }
   parseFunc := func(b []byte) (fmt.Stringer, error) {
     // binary to input type
