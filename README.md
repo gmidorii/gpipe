@@ -17,4 +17,6 @@ func main() {
 }
 ```
 
-Passed type from converter to convert is `fmt.Stringer`.  
+### Caution
+* Passed type from converter to convert is `fmt.Stringer`.
+* Create goroutine in gpipe library.
