@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"context"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -46,12 +45,11 @@ func (u Upper) Convert(out fmt.Stringer, params []interface{}) (fmt.Stringer, er
 }
 
 func main() {
-	ctx, _ := context.WithCancel(context.Background())
 	in := gpipe.Input(os.Stdin, 10)
 	convs := []gpipe.Converter{
 		Upper{},
 	}
-	gpipe.Output(ctx, os.Stdout, in, parse, convs)
+	gpipe.Output(os.Stdout, in, parse, convs)
 }
 
 func parse(b []byte) (fmt.Stringer, error) {

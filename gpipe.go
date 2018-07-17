@@ -2,7 +2,6 @@ package gpipe
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"io"
 )
@@ -33,7 +32,7 @@ func Input(r io.Reader, size int) chan []byte {
 }
 
 // Output is output to io.Writer
-func Output(ctx context.Context, w io.Writer, in chan []byte, parse Parse, converters []Converter) error {
+func Output(w io.Writer, in chan []byte, parse Parse, converters []Converter) error {
 	for {
 		select {
 		case b, ok := <-in:
@@ -52,8 +51,6 @@ func Output(ctx context.Context, w io.Writer, in chan []byte, parse Parse, conve
 				out = output
 			}
 			fmt.Fprintln(w, out.String())
-		case <-ctx.Done():
-			return nil
 		}
 	}
 }
